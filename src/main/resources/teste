@@ -1,0 +1,14 @@
+{
+   "id_operator":0,
+   "services_list": [1,4,7],
+   "start":{
+        "latitude":0.0,
+        "longitude":0.0,
+        "datetime": "2022-08-15 00:00:00"
+   },
+   "end":{
+           "latitude":0.0,
+           "longitude":0.0,
+           "datetime": "2022-08-15 00:00:00"
+   }
+}
