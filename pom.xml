@@ -128,7 +128,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!--Aqui não funciona
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -150,7 +149,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			-->
 		</plugins>
 	</build>
 
