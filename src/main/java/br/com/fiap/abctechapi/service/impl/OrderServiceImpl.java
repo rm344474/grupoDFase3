@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements OrderService {
+abstract public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     private AssistanceRepository assistanceRepository;
 
@@ -30,12 +30,12 @@ public class OrderServiceImpl implements OrderService {
     public void saveOrder(Order order, List<Long> arrayAssists) throws Exception {
         ArrayList<Assistance> assistances = new ArrayList<>();
         arrayAssists.forEach( i -> {
-            Assistance assistance = assistanceRepository.findById(i).orElseThrow();
-            assistances.add(assistance);
+            Optional<Assistance> assistance = assistanceRepository.findById(i);
+            if(!assistance.isPresent()){
+            }
+            assistances.add(assistance.get());
         });
-
         order.setAssists(assistances);
-
         if(!order.hasMinAssists()){
             throw new MinimumAssistRequiredException("Invalid Assists", "Necessario no minimo 1 assistencia");
         }else if (order.exceedsMaxAssists()){

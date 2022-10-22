@@ -32,7 +32,12 @@ public class OrderServiceTest {
 
     @BeforeEach
     public void init() {
-        orderService = new OrderServiceImpl(orderRepository, assistanceRepository);
+        orderService = new OrderServiceImpl(orderRepository, assistanceRepository) {
+            @Override
+            public List<Order> getOrdersList() {
+                return null;
+            }
+        };
         when(assistanceRepository.findById(any())).
                 thenReturn(
                         Optional.of(new Assistance(1L, "Teste", "Teste description:")));

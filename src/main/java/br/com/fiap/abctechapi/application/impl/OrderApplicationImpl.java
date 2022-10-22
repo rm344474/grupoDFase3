@@ -37,6 +37,12 @@ public class OrderApplicationImpl implements OrderApplication {
                 (order) -> new OrderResponseDto(order.getId(), order.getOperatorId(), order.getAssists().stream().map(this::mapAssistToDto).collect(Collectors.toList()), mapOrderLocationToDto(order.getStartOrderLocation()), mapOrderLocationToDto(order.getEndOrderLocation()))
         ).collect(Collectors.toList());
     }
+
+    @Override
+    public List<OrderDto> getOrdersList() {
+        return null;
+    }
+
     private AssistDto mapAssistToDto(Assistance assist){
         return new AssistDto(assist.getId(), assist.getName(), assist.getDescription());
     }
