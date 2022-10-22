@@ -83,5 +83,20 @@ public class OrderServiceTest {
         }
         return arrayList;
     }
+@Test
+public void create_order_date_ok() throws Exception {
+    Order newOrder = new Order();
+    OrderLocation startDate = new OrderLocation();
+    OrderLocation endDate = new OrderLocation();
+    startDate.setId(15L);
+    startDate.setDate(new Date(2022,10,20));
+    endDate.setId(25L);
+    endDate.setDate(new Date(2022,10,21));
+    newOrder.setOperatorId(1234L);
+    newOrder.setStartOrderLocation(startDate);
+    newOrder.setEndOrderLocation(endDate);
+    orderService.saveOrder(newOrder, generate_mocks_ids(5));
+    verify(orderRepository, times(1)).save(newOrder);
+}
 
 }
